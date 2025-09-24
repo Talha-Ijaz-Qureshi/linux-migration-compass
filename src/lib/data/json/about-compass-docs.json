@@ -1,0 +1,198 @@
+{
+  "info": [
+    {
+      "topic": "Compass Docs. System",
+      "sections": [
+        {
+          "id": "overview",
+          "title": "Overview (Documentation for compass docs is currently under works)",
+          "intro": "The Compass Documentation system is an open-sourced, highly reactive content rendering system with a polished and sleek UI developed on SvelteKit.",
+          "subtopics": [
+            {
+              "title": "UI",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "The UI is comprised of a table of contents, a preferences panel, document source selection header and the main content area. The UI design is a blend of Svelte Carbon Design System https://svelte.carbondesignsystem.com/ and custom design choices."
+                }
+              ]
+            },
+            {
+              "title": "Information Structure",
+              "blocks": [
+                {
+                  "type": "code",
+                  "value": "JSON structure adopted by the rendering pattern\n\nTopic\n├── topic\n└── sections[]\n    └── Section\n        ├── id\n        ├── title\n        ├── intro\n        └── subtopics[]\n            └── Subtopic\n                ├── title\n                └── blocks[]\n                    └── Block\n                        ├── type\n                        ├── value\n                        ├── codeBlock?\n                        ├── kind?\n                        └── message?",
+                  "codeBlock": "multi"
+                },
+                {
+                  "type": "text",
+                  "value": "Above is Compass Docs. JSON data structure's adaptation on the site. Each topic can have multiple sections, and each section can have multiple subtopics. Each subtopic can contain multiple blocks of content, which can be of different types. The blocks can be text, code, or note blocks. Compass Docs uses TypeScript interfaces to define the structure of the content. Information is stored in a JSON file, which is then parsed and rendered."
+                }
+
+              ]
+            },
+            {
+              "title": "Utilities",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "Compass Docs. dynamically renders a table of contents for the displayed page which has collapsable content sections and linked subtopics. It also observes the user's position on the page and adds a cue marker next to the current subtopic, auto-expanding and collapsing sections making it easy to keep track as well as a progression bar with steps that tracks your progress through the documentation"
+                },
+                {
+                  "type": "text",
+                  "value": "The preference panel (hilariously empty at the moment) current allows persistent global theme switching based on various Carbon Design System themes."
+                },
+                {
+                  "type": "text",
+                  "value": "The header includes an option to select the source of the documentation, which allows near instant switching between sources."
+                },
+                {
+                  "type": "text",
+                  "value": "The table of contents and preferences panel can be opened or closed through the hamburger button, alternatively a mouse click can also toggle their states."
+                }
+
+              ]
+            }
+
+          ]
+        },
+        {
+          "id": "features",
+          "title": "Functionality",
+          "intro": "This section covers the technical features and core functionality of Compass Docs.",
+          "subtopics": [
+            {
+              "title": "Rendering Pattern",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "<b>src/routes/+page.svelte</b> is the root component for rendering data. It dynamically renders the content based on the JSON structure defined in the TypeScript interfaces in <b>src/lib/types/content.ts</b>."
+                },
+                {
+                  "type":"text",
+                  "value": "The table of contents also renders dynamically based on the current selected documentation. Sections are created with subtopics that hyperlink to their corresponding sections."
+                }
+              ]
+            },
+            {
+              "title": "JSON Handling",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "Raw JSON information is stored in <b>src/lib/data/json/</b> which is imported, casted and exported in their respective files in the parent directory. Optionally there is a feature present to enable Zod's runtime validation but it will be fully integrated in future versions of Compass Docs.  "
+                }
+              ]
+            },
+            {
+              "title": "Dynamic Rendering",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "<b>src/lib/stores/content.ts</b> generates a list of document sources from existing json files and creates a reactive store with your chosen default page and exports the store used to be used by the table of contents in <b>src/lib/components/Toc.svelte</b> and the main page <b>src/routes/+page.svelte</b>. The store can then be updated reactively from the document source selections, dynamically rendering the main content, as well as the table of contents."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "id": "test",
+          "title": "Main Title: Testing",
+          "intro": "Intro: The content rendering pattern is dynamic!",
+          "subtopics": [
+            {
+              "title": "Subsection Title: Testing",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "Each section can have multiple subtopics, and each subtopic can have multiple blocks of content. The blocks can be of different types, such as text, code, or note."
+                },
+                {
+                  "type": "code",
+                  "value": "console.log(\"Hello, world!\");"
+                },
+                {
+                  "type": "note",
+                  "value": "This is a note block.",
+                  "kind": "info",
+                  "message": "This is an info note."
+                },
+                {
+                  "type": "note",
+                  "value": "This is an error note.",
+                  "kind": "error",
+                  "message": "This is an error note."
+                },
+                {
+                  "type": "note",
+                  "value": "This is a success note.",
+                  "kind": "success",
+                  "message": "This is a success note."
+                },
+                {
+                  "type": "note",
+                  "value": "This is a warning note.",
+                  "kind": "warning",
+                  "message": "This is a warning note."
+                },
+                {
+                  "type": "note",
+                  "value": "This is a warning-alt note.",
+                  "kind": "warning-alt",
+                  "message": "This is a warning-alt note."
+                }
+              ]
+            },
+            {
+              "title": "Subsection Title 2: Testing",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "This is the second subsection."
+                },
+                {
+                  "type": "code",
+                  "value": "console.log(\"Hello, world!\");"
+                },
+                {
+                  "type": "note",
+                  "value": "This is a note block.",
+                  "kind": "info",
+                  "message": "This is an info note."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "test2",
+          "title": "Main Title 2: Testing",
+          "intro": "Intro: The content rendering pattern is dynamic!",
+          "subtopics": [
+            {
+              "title": "Subsection Title 3: Testing",
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "This is the third subsection."
+                },
+                {
+                  "type": "code",
+                  "value": "console.log(\"Hello, world!\");",
+                  "codeBlock": "single"
+                },
+                {
+                  "type": "note",
+                  "value": "This is a note block.",
+                  "kind": "info",
+                  "message": "This is an info note."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
