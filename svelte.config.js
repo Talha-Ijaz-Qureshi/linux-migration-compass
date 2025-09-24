@@ -10,7 +10,10 @@ const config = {
 			pages: 'build',
       		assets: 'build',
       		fallback: 'index.html'
-		})
+		}),
+		paths: {
+			base: process.env.NODE_ENV === 'production' ? '/linux-migration-compass' : ''
+		}
 	}
 };
 
