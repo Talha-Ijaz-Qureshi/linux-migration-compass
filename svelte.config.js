@@ -11,8 +11,14 @@ const config = {
       		assets: 'build',
       		fallback: 'index.html'
 		}),
-		paths: {
-			base: process.env.NODE_ENV === 'production' ? '/linux-migration-compass' : ''
+		prerender: {
+			handleHttpError: ({ path, referrer, message }) => {
+				// ignore deliberate link to non-existent page (used to generate 404)
+				if (path === '/not-found') return;
+				
+				// otherwise fail the build
+				throw new Error(message);
+			}
 		}
 	}
 };

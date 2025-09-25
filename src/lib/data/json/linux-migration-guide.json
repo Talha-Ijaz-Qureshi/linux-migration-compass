@@ -456,11 +456,11 @@
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt update\nsudo apt install fprintd libpam-fprintd"
+                  "value": "fprintd-enroll"
                 },
                 {
                   "type": "text",
-                  "value": "Now we add update the system to use our fingerprint reader for authentication. This can now be used to unlock your screen, authenticate sudo commands, and log in to your system."
+                  "value": "Now we update the system to use our fingerprint reader for authentication. This can now be used to unlock your screen, authenticate sudo commands, and log in to your system."
                 },
                 {
                   "type": "code",
@@ -494,7 +494,7 @@
               "blocks": [
                 {
                   "type": "text",
-                  "value": "a Display Server Protocol is a communication protocol between the display server and the applications. It is responsible for rendering graphics on the screen and handling input events from the keyboard and mouse. Pop!_OS uses X11 as its default display server protocol, which is an older protocol that has been around for decades. However, it is still widely used and supported by most applications."
+                  "value": "A Display Server Protocol is a communication protocol between the display server and the applications. It is responsible for rendering graphics on the screen and handling input events from the keyboard and mouse. Pop!_OS uses X11 as its default display server protocol, which is an older protocol that has been around for decades. However, it is still widely used and supported by most applications."
                 },
                 {
                   "type": "text",
@@ -512,11 +512,11 @@
                 },
                 {
                   "type": "text",
-                  "value": "This will open your GNOME Display Manager configuration file. Find the line that says #WaylandEnable=false and uncomment it by removing the # at the beginning of the line. And write true. Save and exit the file."
+                  "value": "This will open your GNOME Display Manager configuration file. Find the line that says <b>#WaylandEnable=false</b> and uncomment it by removing the # at the beginning of the line. And write true. Save and exit the file."
                 },
                 {
                   "type": "text",
-                  "value": "Now log out of your current session with CTRL + ALT + DEL or through the system tray."
+                  "value": "Now log out of your current session with <b>CTRL + ALT + DEL</b> or through the system tray."
                 },
                 {
                   "type": "note",
@@ -560,7 +560,7 @@
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt-get install system76-driver-nvidia"
+                  "value": "sudo apt install system76-driver-nvidia"
                 },
                 {
                   "type": "text",
@@ -568,7 +568,7 @@
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt-get install nvidia-driver-xxx"
+                  "value": "sudo apt install nvidia-driver-xxx"
                 }
               ]
             },
@@ -579,13 +579,19 @@
                   "type": "text",
                   "value": "Most systems with hybrid GPUs may experience a black screen once waking up from suspend. This is a well known and notorious issue mainly caused by NVIDIA drivers. There are no permanents fixes to date, however they are some workarounds you can try:"
                 },
+                                {
+                  "type": "note",
+                  "value": "As for September 2025, this issue has largly been resolved with the latest NVIDIA drivers. If you are still experiencing this issue, try updating your NVIDIA drivers to the latest version.",
+                  "kind": "info",
+                  "message": "Updated Information"
+                },
                 {
                   "type": "text",
-                  "value": "<ol>1. Downgrading your NVIDIA drivers to version 550, or 470.<br></ol>"
+                  "value": "<ol>1. Updating NVIDIA drivers to the latest version<br></ol>"
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt-get install nvidia-driver-550 # or 470"
+                  "value": "sudo apt install nvidia-driver-580 # as for September 2025, 570 drivers are also stable."
                 },
                 {
                   "type": "text",
@@ -593,7 +599,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "<ol>3. If none of these solutions work, then turn off your NVIDIA GPU under your BIOS settings and enable only when needed and avoid suspending your laptop.</ol>"
+                  "value": "<ol>3. If none of these solutions work then unfortunately there isn't much you can do. You may turn off your NVIDIA GPU under your BIOS settings and enable only when needed and avoid suspending your laptop.</ol>"
                 }
               ]
             },
@@ -618,15 +624,15 @@
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt update\nsudo apt install htop lm-sensors"
+                  "value": "sudo apt update\nsudo apt install lm-sensors"
                 },
                 {
                   "type": "text",
-                  "value": "htop requires lm-sensors to get sensor readings"
+                  "value": "run <b>sudo sensors-detect</b> to detect your system's sensors."
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt update\nsudo apt install btop"
+                  "value": "sudo apt update\nsudo apt install btop i7z"
                 }
               ]
             },
@@ -903,7 +909,7 @@
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt-get update\nsudo apt-get install kdenlive"
+                  "value": "sudo apt update\nsudo apt install kdenlive"
                 }
               ]
             },

@@ -3,6 +3,5 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit()],
-	base: '/linux-migration-compass/'
+	plugins: [tailwindcss(), sveltekit()]
 });
