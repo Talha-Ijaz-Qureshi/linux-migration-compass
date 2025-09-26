@@ -126,12 +126,6 @@
                   "message": "Warning"
                 },
                 {
-                  "type": "note",
-                  "value": "For dual-booting, it's recommended to create a separate EFI partition (500MB), Root partition (recommended 50GB+), and optionally a Home partition. Pop!_OS installer provides an option to create these during the Custom installation.",
-                  "kind": "info",
-                  "message": "Partitioning Information"
-                },
-                {
                   "type": "text",
                   "value": "<ol>5. Click \"Erase and Install\" after you have chosen your installation type</ol>"
                 }
@@ -627,9 +621,14 @@
                   "value": "sudo apt update\nsudo apt install lm-sensors"
                 },
                 {
-                  "type": "text",
-                  "value": "run <b>sudo sensors-detect</b> to detect your system's sensors."
+                  "type": "code",
+                  "value": "sudo sensors-detect # Follow the prompts to detect your sensors"
                 },
+                                {
+                  "type": "text",
+                  "value": "btop and i7z are also great tools for monitoring system resources in depth."
+                },
+
                 {
                   "type": "code",
                   "value": "sudo apt update\nsudo apt install btop i7z"

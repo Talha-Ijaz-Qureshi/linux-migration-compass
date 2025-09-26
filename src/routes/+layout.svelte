@@ -255,7 +255,7 @@
             />
           </a>
           <a
-            href="https://github.com/Talha-Ijaz-Qureshi/linux-guide"
+            href="https://github.com/Talha-Ijaz-Qureshi/linux-migration-compass"
             target="_blank"
             style="text-decoration:none;"
             rel="noopener noreferrer"
@@ -372,10 +372,10 @@
     
   }
   .two h3 {
-    font-size: .9rem;
+    font-size: .75rem;
   }
   .two p {
-    font-size: .85rem;
+    font-size: .65rem;
   }
 
   .footer-content {
@@ -556,6 +556,7 @@
       padding-top: 2rem;
       z-index: 1200;
     }
+
 
     .lic {
       border-radius: 0;

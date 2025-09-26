@@ -1,25 +1,8 @@
+# Linux Migration Compass
+
 ## Compass Docs Data Structure
 
 Compass Docs uses a hierarchical, TypeScript-defined data structure to render professional, wiki-like documentation. The structure is designed for flexibility, allowing custom JSON content to be transformed into a sleek, reactive UI with SvelteKit and IBM Carbon Design System. Below is an ASCII representation of the aggregated data model:
-
-
-Topic
-├── topic: string
-└── sections: Section[]
-    └── Section
-        ├── id: string
-        ├── title: string
-        ├── intro: string
-        └── subtopics: Subtopic[]
-            └── Subtopic
-                ├── title: string
-                └── blocks: Block[]
-                    └── Block
-                        ├── type: BlockType
-                        │   └── ('text' | 'code' | 'note')
-                        ├── value: string
-                        ├── kind?: ('error' | 'info' | 'info-square' | 'success' | 'warning' | 'warning-alt')
-                        └── message?: string
 
 
 ### Structure Overview

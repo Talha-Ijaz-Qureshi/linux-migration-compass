@@ -313,7 +313,7 @@
 
     @media (max-width: 768px) {
         .header {
-            width: 80%;
+            width: 82%;
             margin: auto;
         }
     }
