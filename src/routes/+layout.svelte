@@ -182,7 +182,7 @@
           <h3>About Compass Docs.</h3>
           <p>
             The Compass Documentation system is an open-sourced, highly reactive content rendering system with a polished and sleek UI developed on SvelteKit.
-            <a href="#search">Swap a source</a>
+            <a href="#search">Switch Pages</a>
           </p>
           <!-- <p>
             This program is distributed in the hope that it will be useful, but

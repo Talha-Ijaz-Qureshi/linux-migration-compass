@@ -6,7 +6,7 @@
         {
           "id": "introduction",
           "title": "Introduction to Linux Migration Compass",
-          "intro": "The Linux Migration Compass is a comprehensive documentation guide designed to help users new to Linux transition seamlessly to the Pop!_OS Linux distribution. Pop!_OS by system76 is a Linux distribution known for its polished interface, performance optimizations, automatic handling of hybrid graphics. The guide will cover everything from installation to advanced usage, ensuring that you have all the information you need to make the switch successfully.",
+          "intro": "The Linux Migration Compass is a comprehensive guide designed to help users new to Linux transition seamlessly to the Pop!_OS 22.04 Linux distribution. Pop!_OS by system76 is a Linux distribution known for its polished interface, performance optimizations and easy handling of hybrid graphics. The guide will cover everything from installation to advanced usage, ensuring that you have all the information you need to make the switch, and familiarise with Linux successfully.",
           "subtopics": [
             {
               "title": "What is Pop!_OS?",
@@ -57,7 +57,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "<ol>1. Insert your USB drive.<br>2. Open Rufus.<br>3. Select the downloaded Pop!_OS ISO file.<br>4. Choose your USB drive as the target.<br>5. Click \"Start\" or \"Flash\" to create the bootable USB.</ol>"
+                  "value": "<ol>1. Insert your USB drive.<br>2. Open Rufus.<br>3. Select the downloaded Pop!_OS ISO file.<br>4. Choose your USB drive as the target.<br>5. Click \"START\" to create the bootable USB.</ol>"
                 },
                 {
                   "type": "note",
@@ -258,15 +258,21 @@
                 },
                 {
                   "type": "text",
-                  "value": "There are a variety of software distributions available for Pop!_OS. A well known one being Flatpak. Flatpak is a software utility for software virtualization and deployment. It allows you to install and run a wide variety of applications in a sandboxed environment, which means they are isolated from the rest of your system. This can help improve security and stability. To install Flatpak, use the following command:"
+                  "value": "There are a variety of software distributions available for Pop!_OS. A well known one being Flatpak. Flatpak is a software utility for software virtualization and deployment. It allows you to install and run a wide variety of applications, often reliably. Flatpak comes preinstalled with Pop!_OS"
                 },
                 {
                   "type": "code",
-                  "value": "sudo apt update\nsudo apt install flatpak"
+                  "value": "flatpak install <application-name>"
+                },
+                                {
+                  "type": "note",
+                  "value": "When roughly searching for an application, flatpak will give you a list of matches, enter the number corresponding to the application you want to install, and choose whether to install it system-wide or just for your user.",
+                  "kind": "info",
+                  "message": "About installing Flatpak applications via terminal"
                 },
                 {
                   "type": "text",
-                  "value": "One of the most common ways to install softwares is through the terminal. The commands vary depending on your choice of softwares or package managers (Follow instructions from the respective software provider). For example, to install Chrome"
+                  "value": "One of the most common ways to install softwares is through the terminal. The commands vary depending on your choice of softwares or package managers (Follow instructions from the respective software provider). For example, to install Chrome (although you should really consider Gecko based browsers like Zen and Floorp!)"
                 },
                 {
                   "type": "code",
@@ -291,6 +297,24 @@
                 {
                   "type": "code",
                   "value": "sudo apt update\nsudo apt install google-chrome-stable"
+                },
+                {
+                  "type": "text",
+                  "value": "You may want to consider using a browser like Floorp or Zen, which are Gecko based browsers that focus on privacy (out-of-the box unlike Mozilla's Firefox -_-, performance, and each has a unique experience, Floorp has great functionality for workspaces, while Zen excells in a sleek, compact and minimal design. To install Floorp, run the following commands:"
+                },
+                {
+                  "type": "code",
+                  "value": "curl -fsSL https://ppa.floorp.app/KEY.gpg | sudo gpg --dearmor -o /usr/share/keyrings/Floorp.gpg\nsudo curl -sS --compressed -o /etc/apt/sources.list.d/Floorp.list 'https://ppa.floorp.app/Floorp.list'\nsudo apt update\nsudo apt install floorp",
+                  "codeBlock": "multi"
+
+                },
+                                {
+                  "type": "text",
+                  "value": "To install Zen:"
+                },
+                {
+                  "type": "code",
+                  "value": "flatpak install zen browser # try your best to install it as we discussed earlier!"
                 }
               ]
             },
@@ -367,7 +391,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "Howdy outputs an unsupported image format error for most IR camera sensors, this is due to an issue with newer numpy packages not resolving well with the current Howdy version. To resolve this, we need to downgrade numpy to a compatible version. The issue is brought up here: https://stackoverflow.com/a/78638053"
+                  "value": "Howdy outputs an unsupported image format error for most IR camera sensors, this is due to an issue with numpy version 2 not resolving well with the current Howdy version. To resolve this, we need to downgrade numpy to a compatible version. The issue is brought up here: https://stackoverflow.com/a/78638053"
                 },
                 {
                   "type": "code",
@@ -434,7 +458,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "Visit https://fprint.freedesktop.org/supported-devices.html and try finding your fingerprint's name and ID in this case name is \"Validity Sensors\" and the ID is \"138a:00ab\".<br><br> If you are not able to find yours in the list, your fingerprint reader is likely not supported."
+                  "value": "Visit https://fprint.freedesktop.org/supported-devices.html and try finding your fingerprint's name and ID in this case, the name is \"Validity Sensors\" and the ID is \"138a:00ab\".<br><br> If you are not able to find yours in the list, your fingerprint reader is likely not supported."
                 },
                 {
                   "type": "text",
@@ -669,7 +693,7 @@
               "blocks": [
                 {
                   "type": "text",
-                  "value": "Pop!_OS is one of the best modern and highly efficient linux distribution out there. It has excellent battery management systems ensuring high power delivery when needed and high efficiency optimizations when needed, and provides several tools for managing battery life and optimizing power consumption. It will most certainly breathe new life to your laptop's on battery performance compared to Windows. You can use the Power settings in the Settings menu to adjust power-saving options, such as screen brightness, sleep settings, and battery usage."
+                  "value": "Pop!_OS is one of the best linux distribution in battery efficiency out there. It has excellent battery management systems ensuring high power delivery when needed and high efficiency optimizations when needed, and provides several tools for managing battery life and optimizing power consumption through its power profiles and discrete GPU handling. It will most certainly bring a new life to your laptop on battery performance compared to Windows. You can use the Power settings in the Settings menu to adjust your power options, such as profiles, screen brightness and sleep settings etc."
                 },
                 {
                   "type": "note",
@@ -797,6 +821,7 @@
           "title": "Applications and Alternatives",
           "intro": "Linux has a large community of amazing developers creating and managing powerful, open-sourced applications. In this section, we will cover some of the most popular applications and alternatives available for Pop!_OS. This includes productivity tools, media players, and development tools.",
           "subtopics": [
+
             {
               "title": "Gaming",
               "blocks": [
