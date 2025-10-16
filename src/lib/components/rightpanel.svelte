@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Select, SelectItem, Theme, Toggle } from "carbon-components-svelte";
+  import { Select, SelectItem, Theme, Toggle, Dropdown } from "carbon-components-svelte";
   import Icon from "@iconify/svelte";
   import { preferencesOpen, slugifyEnabled, camelCaseEnabled, selectedTheme } from "$lib/stores/preferences";
 
@@ -59,14 +59,19 @@
        role="button"
        tabindex="0"
        on:keydown={(e) => { if(e.key === 'Enter' || e.key === ' ') stopPropagation(e); }}>
-    <Select labelText="Carbon theme" bind:selected={$selectedTheme}>
-      <SelectItem value="white" text="White" />
-      <SelectItem value="g10" text="Gray 10" />
-      <SelectItem value="g80" text="Gray 80" />
-      <SelectItem value="g90" text="Gray 90" />
-      <SelectItem value="g100" text="Dark" />
-      <SelectItem value="amoled" text="AMOLED" />
-    </Select>
+    <Dropdown
+      titleText="Select Theme"
+      bind:selectedId={$selectedTheme}
+      items={[
+        { id: "white", text: "White" },
+        { id: "g10", text: "Gray 10" },
+        { id: "g80", text: "Gray 80" },
+        { id: "g90", text: "Gray 90" },
+        { id: "g100", text: "Dark" },
+        { id: "amoled", text: "AMOLED" }
+      ]}
+      size="sm"
+    />
     
     <div style="margin-top: 1rem;">
       <Toggle 
@@ -90,6 +95,10 @@
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+  :global(.bx--list-box--expanded.bx--list-box--sm .bx--list-box__menu) {
+    max-height: fit-content;
+  }
+ 
   :global(body) {
         --cds-support-02: #F55875 !important;
   }
