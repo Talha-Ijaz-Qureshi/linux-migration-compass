@@ -185,7 +185,7 @@ on:click={handleClick}
   :global(.toc-progress) {
     position: absolute;
     top: 0;
-    right: -1.2em;
+    right: -1.15em;
     height: 100%;
     width: 2rem;
     padding: 1rem;
@@ -200,6 +200,7 @@ on:click={handleClick}
     -webkit-backdrop-filter: blur(10px);
     -moz-backdrop-filter: blur(10px);
   } */
+
 .active-link {
   color: #F55875;
   padding-right: 0.5em;
@@ -251,7 +252,7 @@ on:click={handleClick}
     transition: transform 200ms cubic-bezier(1, 0, 0.01, 1);
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow: visible;
-    border-right: 1px solid var(--cds-border-subtle, #e0e0e0);
+    border-right: 2px solid var(--cds-border-subtle, #e0e0e0);
     transform: translateX(0%);
 
     -webkit-tap-highlight-color: transparent;
