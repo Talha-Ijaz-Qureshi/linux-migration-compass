@@ -201,12 +201,13 @@ on:click={handleClick}
     -moz-backdrop-filter: blur(10px);
   } */
 .active-link {
-  background-image: linear-gradient(90deg, #78a9ff, orange);
+  background: linear-gradient(90deg, #F55875, #F55875);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;  
-  border-right: orange 3px double;
   padding-right: 0.5em;
+  transition: 500ms;
+
 }
   span,
   ul {

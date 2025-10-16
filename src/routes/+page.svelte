@@ -13,9 +13,10 @@
     import type { Section } from "$lib/types/content";
     import { currentSource, sources } from "$lib/stores/contentStore";
     import { ComboBox } from "carbon-components-svelte";
+    import { slugifyEnabled } from "$lib/stores/preferences";
 
-    function slugify(text: string): string {
-        if (!text) return "";
+    function slugify(text: string, enabled: boolean = true): string {
+        if (!text || !enabled) return text;
         return text
             .toLowerCase()
             .trim()
@@ -71,6 +72,8 @@
         text: key,
     }));
 
+    let selectedValue = "";
+
     function handleSourceSelect(event: CustomEvent) {
         const selected = event.detail.selectedId as keyof typeof sources;
         if (selected in sources) {
@@ -78,12 +81,16 @@
         }
     }
 
+    function handleClear() {
+        selectedValue = "";
+    }
+
     $: topicTitle = $currentSource[0].topic;
 
     function searchFilter(item: { text: string }, value: string): boolean {
         if (!value) return true;
         return item.text.toLowerCase().includes(value.toLowerCase());
-    } // Can be passed optionally to ComboBox, for filtering search results
+    } 
 </script>
 
 <div class="header">
@@ -93,7 +100,10 @@
             titleText="Select Documentation Source"
             placeholder="Choose a documentation source..."
             {items}
+            bind:value={selectedValue}
             on:select={handleSourceSelect}
+            on:focus={handleClear}
+            shouldFilterItem={searchFilter}
             invalidText="Erroneous source"
         />
     </div>
@@ -117,12 +127,12 @@
 <Content class="documentation">
     {#each $currentSource[0].sections as section}
         <section id={section.id}>
-            <h2>{section.title}</h2>
-            <p>{section.intro}</p>
+            <h2>{slugify(section.title, $slugifyEnabled)}</h2>
+            <p>{@html section.intro}</p>
             {#each section.subtopics as subtopic}
-                {@const subtopicSlug: string = slugify(subtopic.title)}
+                {@const subtopicSlug: string = slugify(subtopic.title, true)}
                 {@const subtopicId: string = `${section.id}-${subtopicSlug}`}
-                <h3 id={subtopicId}>{subtopic.title}</h3>
+                <h3 id={subtopicId}>{slugify(subtopic.title, $slugifyEnabled)}</h3>
                 {#each subtopic.blocks as block}
                     {#if block.type === "text"}
                         <p style="margin: 1em 0 .2em 0;">

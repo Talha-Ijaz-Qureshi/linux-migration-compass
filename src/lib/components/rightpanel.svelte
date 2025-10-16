@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { Select, SelectItem, Theme } from "carbon-components-svelte";
+  import { Select, SelectItem, Theme, Toggle } from "carbon-components-svelte";
   import Icon from "@iconify/svelte";
-  import { preferencesOpen } from "$lib/stores/preferences";
+  import { preferencesOpen, slugifyEnabled, selectedTheme } from "$lib/stores/preferences";
 
-  let selected = "g100";
   $: isOpen = $preferencesOpen;
 
   function handleMouseOver() {
@@ -20,29 +19,72 @@
   function handleClick() {
     preferencesOpen.update(state => !state);
   }
+
+  $: {
+    if (typeof document !== 'undefined') {
+      if ($selectedTheme === "amoled") {
+        document.body.classList.add('amoled-theme');
+      } else {
+        document.body.classList.remove('amoled-theme');
+      }
+    }
+  }
 </script>
 
-<Theme theme={selected} />
+<Theme theme={$selectedTheme === "amoled" ? "g100" : $selectedTheme} />
 
 <div
   class="preferences-panel"
   on:click={handleClick}
   class:open={isOpen}
+  role="button"
+  tabindex="0"
+  on:keydown={(e) => { if(e.key === 'Enter' || e.key === ' ') handleClick(); }}
 >
   <h1 style="opacity: 0.8;">Preferences</h1>
-  <div on:click={stopPropagation}>
-    <Select labelText="Carbon theme" bind:selected>
+  <div 
+       on:click={stopPropagation}
+       role="button"
+       tabindex="0"
+       on:keydown={(e) => { if(e.key === 'Enter' || e.key === ' ') stopPropagation(e); }}>
+    <Select labelText="Carbon theme" bind:selected={$selectedTheme}>
       <SelectItem value="white" text="White" />
       <SelectItem value="g10" text="Gray 10" />
       <SelectItem value="g80" text="Gray 80" />
       <SelectItem value="g90" text="Gray 90" />
       <SelectItem value="g100" text="Dark" />
+      <SelectItem value="amoled" text="AMOLED" />
     </Select>
+    
+    <div style="margin-top: 1rem;">
+      <Toggle 
+        labelText="Slugify Headings" 
+        bind:toggled={$slugifyEnabled}
+        size="sm"
+      />
+    </div>
   </div>
 </div>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+  :global(body) {
+        --cds-support-02: #F55875 !important;
+  }
+  :global(body.amoled-theme) {
+    --cds-background: #000000 !important;
+    --cds-layer: #000000 !important;
+    --cds-layer-01: #000000 !important;
+    --cds-layer-02: #000000 !important;
+    --cds-layer-03: #000000 !important;
+    --cds-field: #000000 !important;
+    --cds-ui-background: #000000 !important;
+    --cds-notification-background-info: #000000 !important;
+    --cds-notification-background-warning: #000000 !important;
+    --cds-notification-background-error: #000000 !important;
+    --cds-notification-background-success: #000000 !important;
+    --cds-field-01: #1a1a1a !important;
+  }
   .preferences-panel {
     position: fixed;
     top: 50%;

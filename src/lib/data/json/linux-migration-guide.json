@@ -6,7 +6,7 @@
         {
           "id": "introduction",
           "title": "Introduction to Linux Migration Compass",
-          "intro": "The Linux Migration Compass is a comprehensive guide designed to help users new to Linux transition seamlessly to the Pop!_OS 22.04 Linux distribution. Pop!_OS by system76 is a Linux distribution known for its polished interface, performance optimizations and easy handling of hybrid graphics. The guide will cover everything from installation to advanced usage, ensuring that you have all the information you need to make the switch, and familiarise with Linux successfully.",
+          "intro": "<b>Originally Published: 9th April, 2025</b><br><b>Updated: 16th October, 2025</b><br><br>The Linux Migration Compass is a comprehensive guide designed to help users new to Linux transition seamlessly to the Pop!_OS 22.04 Linux distribution. Pop!_OS by system76 is a Linux distribution known for its polished interface, performance optimizations and easy handling of hybrid graphics. The guide will cover everything from installation to advanced usage, ensuring that you have all the information you need to make the switch, and familiarise with Linux successfully.",
           "subtopics": [
             {
               "title": "What is Pop!_OS?",
@@ -300,7 +300,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "You may want to consider using a browser like Floorp or Zen, which are Gecko based browsers that focus on privacy (out-of-the box unlike Mozilla's Firefox -_-, performance, and each has a unique experience, Floorp has great functionality for workspaces, while Zen excells in a sleek, compact and minimal design. To install Floorp, run the following commands:"
+                  "value": "You may want to consider using a browser like Floorp or Zen, which are Gecko based browsers that focus on privacy (out-of-the box unlike Mozilla's Firefox -_-), performance, and each has a unique experience, Floorp has great functionality for workspaces, while Zen excells in a sleek, compact and minimal design. To install Floorp, run the following commands:"
                 },
                 {
                   "type": "code",
@@ -351,7 +351,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "You will be prompted to choose between different options for howdy. f, b, s for Fast, Balanced or Secure. You may choose that best fit your needs."
+                  "value": "You will be prompted to choose between different options for howdy. <b>f</b>, <b>b</b>, <b>s</b> for Fast, Balanced or Secure. You may choose that best fit your needs."
                 },
                 {
                   "type": "code",
@@ -648,15 +648,24 @@
                   "type": "code",
                   "value": "sudo sensors-detect # Follow the prompts to detect your sensors"
                 },
-                                {
+                {
                   "type": "text",
                   "value": "btop and i7z are also great tools for monitoring system resources in depth."
+                },
+                {
+                  "type": "code",
+                  "value": "sudo apt update\nsudo apt install btop i7z"
+                },
+                {
+                  "type": "text",
+                  "value": "To monitor your Intel integrated GPU, and the package power, install the following package:"
                 },
 
                 {
                   "type": "code",
-                  "value": "sudo apt update\nsudo apt install btop i7z"
+                  "value": "sudo apt update && sudo apt install intel-gpu-tools\nsudo intel_gpu_top # to monitor the iGPU in real-time"
                 }
+
               ]
             },
             {
@@ -664,7 +673,7 @@
               "blocks": [
                 {
                   "type": "text",
-                  "value": "Pop!_OS supports hardware acceleration for certain applications, such as web browsers and video players. Hardware acceleration allows these applications to use the GPU for rendering graphics, which can improve performance and reduce CPU usage. Hence significantly saving battery life on laptops."
+                  "value": "Pop!_OS supports hardware acceleration for certain applications, such as web browsers and video players. Hardware acceleration allows these applications to use the GPU for rendering graphics, which can significantly improve power consumption, saving tons of battery life on laptops."
                 },
                 {
                   "type": "text",
@@ -679,13 +688,22 @@
                   "value": "layers.acceleration.force-enabled = true"
                 },
                 {
+                  "type": "code",
+                  "value": "gfx.webrender.all = true"
+                },
+                {
                   "type": "text",
-                  "value": "and"
+                  "value": "By default Pop!_OS does not come with certain media codecs preinstalled due to licensing issues. However, you can easily install them using the following command:"
                 },
                 {
                   "type": "code",
-                  "value": "gfx.webrender.all = true"
+                  "value": "sudo apt install -y ubuntu-restricted-extras gstreamer1.0-plugins-bad"
+                },
+                {
+                  "type": "text",
+                  "value": "To confirm whether hardware acceleration is working, use the <b>intel_gpu_top</b> package as we learned earlier. Observe movement in the Video section, any bars appearing there indicate hardware acceleration is enabled."
                 }
+
               ]
             },
             {
