@@ -168,7 +168,7 @@ on:click={handleClick}
               <a
   href={subtopicHref}
   on:click={(event) => handleLinkClick(event, subtopicHref)}
-  class={activeSubtopicId === `${section.id}-${subtopicSlug}` ? "active-link" : ""}
+  class={activeSubtopicId === `${section.id}-${subtopicSlug}` ? "active-link" : "def"}
 >
   {subtopic.title}
 </a>            </li>
@@ -201,14 +201,16 @@ on:click={handleClick}
     -moz-backdrop-filter: blur(10px);
   } */
 .active-link {
-  background: linear-gradient(90deg, #F55875, #F55875);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;  
+  color: #F55875;
   padding-right: 0.5em;
-  transition: 500ms;
+  transition: 250ms;
+}
+
+.def {
+    color: var(--cds-link-primary);
 
 }
+
   span,
   ul {
     word-wrap: break-word;
@@ -300,6 +302,7 @@ on:click={handleClick}
     color: var(--cds-link-primary, #0f62fe);
     text-decoration: none;
     font-size: var(--cds-body-compact-01-font-size, 0.875rem);
+    transition: 100ms;
   }
 
   a:hover {

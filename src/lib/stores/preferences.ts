@@ -3,6 +3,7 @@ import { browser } from '$app/environment';
 
 export const preferencesOpen = writable(false);
 export const slugifyEnabled = writable(false);
+export const camelCaseEnabled = writable(false);
 
 function themeStore() {
   const defaultTheme = 'g100';

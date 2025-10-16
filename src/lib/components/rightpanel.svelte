@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Select, SelectItem, Theme, Toggle } from "carbon-components-svelte";
   import Icon from "@iconify/svelte";
-  import { preferencesOpen, slugifyEnabled, selectedTheme } from "$lib/stores/preferences";
+  import { preferencesOpen, slugifyEnabled, camelCaseEnabled, selectedTheme } from "$lib/stores/preferences";
 
   $: isOpen = $preferencesOpen;
 
@@ -27,6 +27,18 @@
       } else {
         document.body.classList.remove('amoled-theme');
       }
+    }
+  }
+
+  function handleSlugifyToggle() {
+    if ($slugifyEnabled) {
+      camelCaseEnabled.set(false);
+    }
+  }
+
+  function handleCamelCaseToggle() {
+    if ($camelCaseEnabled) {
+      slugifyEnabled.set(false);
     }
   }
 </script>
@@ -60,6 +72,16 @@
       <Toggle 
         labelText="Slugify Headings" 
         bind:toggled={$slugifyEnabled}
+        on:toggle={handleSlugifyToggle}
+        size="sm"
+      />
+    </div>
+    
+    <div style="margin-top: 1rem;">
+      <Toggle 
+        labelText="CamelCase Headings" 
+        bind:toggled={$camelCaseEnabled}
+        on:toggle={handleCamelCaseToggle}
         size="sm"
       />
     </div>

@@ -13,18 +13,30 @@
     import type { Section } from "$lib/types/content";
     import { currentSource, sources } from "$lib/stores/contentStore";
     import { ComboBox } from "carbon-components-svelte";
-    import { slugifyEnabled } from "$lib/stores/preferences";
+    import { slugifyEnabled, camelCaseEnabled } from "$lib/stores/preferences";
+    import pkg from 'lodash';
+    const { camelCase } = pkg;
 
-    function slugify(text: string, enabled: boolean = true): string {
-        if (!text || !enabled) return text;
-        return text
-            .toLowerCase()
-            .trim()
-            .replace(/\s+/g, "-")
-            .replace(/[^\w-]+/g, "")
-            .replace(/--+/g, "-")
-            .replace(/^-+/, "")
-            .replace(/-+$/, "");
+    function slugify(text: string, enabled: boolean = true, useCamelCase: boolean = false): string {
+        
+        if (!enabled && !useCamelCase) return text;
+        
+        if (useCamelCase) {
+            return camelCase(text);
+        }
+        
+        if (enabled) {
+            return text
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, "-")
+                .replace(/[^\w-]+/g, "")
+                .replace(/--+/g, "-")
+                .replace(/^-+/, "")
+                .replace(/-+$/, "");
+        }
+        
+        return text;
     }
     function parseUrls(text: string): string {
         const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -127,12 +139,12 @@
 <Content class="documentation">
     {#each $currentSource[0].sections as section}
         <section id={section.id}>
-            <h2>{slugify(section.title, $slugifyEnabled)}</h2>
+            <h2>{slugify(section.title, $slugifyEnabled, $camelCaseEnabled)}</h2>
             <p>{@html section.intro}</p>
             {#each section.subtopics as subtopic}
-                {@const subtopicSlug: string = slugify(subtopic.title, true)}
+                {@const subtopicSlug: string = slugify(subtopic.title, true, false)}
                 {@const subtopicId: string = `${section.id}-${subtopicSlug}`}
-                <h3 id={subtopicId}>{slugify(subtopic.title, $slugifyEnabled)}</h3>
+                <h3 id={subtopicId}>{slugify(subtopic.title, $slugifyEnabled, $camelCaseEnabled)}</h3>
                 {#each subtopic.blocks as block}
                     {#if block.type === "text"}
                         <p style="margin: 1em 0 .2em 0;">

@@ -21,6 +21,7 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"@tailwindcss/vite": "^4.0.0",
+		"@types/lodash": "^4",
 		"gh-pages": "^6.3.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
@@ -32,6 +33,7 @@
 		"@carbon/styles": "^1.78.0",
 		"carbon-components": "^11.66.1",
 		"carbon-components-svelte": "^0.88.4",
+		"lodash": "^4.17.21",
 		"marked": "^15.0.7",
 		"sass": "^1.86.3"
 	},
