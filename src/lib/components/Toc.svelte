@@ -252,6 +252,17 @@ on:click={handleClick}
     border-right: 1px solid var(--cds-border-subtle, #e0e0e0);
     transform: translateX(0%);
 
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  nav * {
+    -webkit-tap-highlight-color: transparent;
   }
     nav.open {
       transform: translateX(-100%);

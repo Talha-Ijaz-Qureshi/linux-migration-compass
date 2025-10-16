@@ -99,6 +99,18 @@
     transition: 200ms cubic-bezier(1, 0, 0.01, 1);
     z-index: 1004;
     border: 1px solid var(--cds-border-subtle, #e0e0e0);
+    
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .preferences-panel * {
+    -webkit-tap-highlight-color: transparent;
   }
   .preferences-panel.open {
       opacity: 1;

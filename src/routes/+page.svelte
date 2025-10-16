@@ -163,6 +163,11 @@
 
 <style>
     @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+    
+    :global(*) {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
     :global(ol) {
         margin: 0.1em;
         margin-left: 2em;
