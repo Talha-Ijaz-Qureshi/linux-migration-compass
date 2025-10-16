@@ -120,7 +120,7 @@
 <div class="btnSlider" class:slideright={$preferencesOpen} >
   {#if !$menuOpen && !$tocOpen && !$preferencesOpen}
     <button class="menu-toggle" on:click={toggleMenu} aria-label="Open menu"
-    in:blur={{ amount: 5, duration: 300 }} out:slide
+    in:blur={{ amount: 5, duration: 300, delay: 0 }} out:slide
     >
       <Icon
         icon="carbon:menu"
@@ -132,7 +132,7 @@
     </button>
   {:else}
     <button class="toc-toggle" class:active={$tocOpen} on:click={toggleToc} aria-label="Toggle menu"
-    in:fade out:slide >
+    in:fade={{delay: 0}} out:slide >
       <Icon
         icon={isLargeScreen ? ($tocOpen ? "carbon:side-panel-open" : "carbon:side-panel-close-filled") 
                            : ($tocOpen ? "carbon:side-panel-close-filled" : "carbon:side-panel-open")}
@@ -147,7 +147,7 @@
       class:active={$preferencesOpen}
       on:click={togglePreferences}
       aria-label="Toggle preferences"
-      in:fly={{ y: -100, duration: 200 }} out:slide
+      in:fly={{ y: -100, duration: 200, delay: 20 }} out:slide={{delay: 0}}
     >
       <Icon
         icon={isLargeScreen ? ($preferencesOpen ? "carbon:settings" : "carbon:settings-view") 
@@ -435,11 +435,11 @@
     top: 0;
     right: 18rem;
     background-color: transparent;
-    padding: .2em;
-    padding-top: .4em;
-    backdrop-filter: blur(.5em);
-      -webkit-backdrop-filter: blur(.5em);
-      -moz-backdrop-filter: blur(.5em);
+    padding: .1em;
+    padding-top: .2em;
+    backdrop-filter: blur(.1em);
+      -webkit-backdrop-filter: blur(.1em);
+      -moz-backdrop-filter: blur(.1em);
     transition: all 200ms cubic-bezier(1, 0, 0.01, 1);
 
     margin: 1.2em;
@@ -519,8 +519,8 @@
       display: block;
       right: 1rem;
       border-radius: .7em;
-      border: 1px solid var(--cds-border-subtle);
-      box-shadow: 1px 0 4px rgba(0, 0, 0, 0.1);
+      /* border: 1px solid var(--cds-border-subtle);
+      box-shadow: 1px 0 4px rgba(0, 0, 0, 0.1); */
 
     }
     .slideright {
@@ -551,8 +551,8 @@
 
     .btnSlider {
       right: 0em;
-      padding: .3em;
-      padding-top: .5em;
+      padding: .1em;
+      padding-top: .2em;
       margin: .5em;
     }
 

@@ -331,5 +331,10 @@
             width: 82%;
             margin: auto;
         }
+
+        p {
+            max-width: 60ch;
+            hyphens: auto;
+        }
     }
 </style>
