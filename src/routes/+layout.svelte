@@ -168,7 +168,7 @@
     <footer class="footer">
       <div class="footer-content">
         <h1>{topicTitle}</h1>
-        <h2>Copyleft - {currentYear} Compass Docs. - Talha Ijaz</h2>
+        <h2>Copyleft - {currentYear} Compass Docs. - Talha "tal" Ijaz</h2>
 
         <div class="logo" class:hide={topicTitle !== "Linux Migration Compass"}>
           <Icon
@@ -181,7 +181,7 @@
         <div class="lic">
           <h3>About Compass Docs.</h3>
           <p>
-            The Compass Documentation system is an open-sourced, highly reactive content rendering system with a polished and sleek UI developed on SvelteKit.
+            The Compass Documentation system is an open-sourced, highly reactive content rendering system with a polished and sleek UI developed on SvelteKit. The source code to the guide is available at <a href="https://github.com/Talha-Ijaz-Qureshi/linux-migration-compass" target="_blank">My Github Repository</a>. Feel free to open a pull request to contribute or report issues!
             <a href="#search">Switch Pages</a>
           </p>
           <!-- <p>
@@ -200,6 +200,7 @@
             may copy, distribute and modify this work under the terms of the GNU
             GPL version 3 or any later version.              <a
             href="https://www.gnu.org/licenses/gpl-3.0.en.html"
+            target="_blank"
             >For more information visit here</a
           >
 
