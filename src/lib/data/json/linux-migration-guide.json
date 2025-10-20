@@ -597,7 +597,7 @@
                   "type": "text",
                   "value": "Most systems with hybrid GPUs may experience a black screen once waking up from suspend. This is a well known and notorious issue mainly caused by NVIDIA drivers. There are no permanents fixes to date, however they are some workarounds you can try:"
                 },
-                                {
+                {
                   "type": "note",
                   "value": "As for September 2025, this issue has largly been resolved with the latest NVIDIA drivers. If you are still experiencing this issue, try updating your NVIDIA drivers to the latest version.",
                   "kind": "info",
@@ -613,7 +613,13 @@
                 },
                 {
                   "type": "text",
-                  "value": "<ol>2. Making sure your display refresh rate in settings matches the specification of your laptop or PC's refresh rate. Wayland can provide you more refresh rates than what your monitor is desgined for as factory spec.<br></ol>"
+                  "value": "<ol>2. Making sure your display refresh rate in settings matches the specification of your laptop or PC's refresh rate. Wayland can provide you more refresh rates than what your monitor is desgined to run by default.<br></ol>"
+                },
+                {
+                  "type": "note",
+                  "value": "According to what I have investigated with journalctl logs, the graphics driver whether Intel's or NVIDIA's fails to reinitialize the display output due to a mismatch in the default refresh rate of the monitor with the selected one in settings.",
+                  "kind": "info-square",
+                  "message": "Information"
                 },
                 {
                   "type": "text",
@@ -915,28 +921,63 @@
               "blocks": [
                 {
                   "type": "text",
-                  "value": "Most commonly known video editing software on linux is Davinci Resolve, the full software is paid with extra features, however a free tier is available too. To download and set up Davinci Resolve, follow the steps:"
+                  "value": "DaVinci Resolve is the most commonly known professional video editing software on Linux. It offers both a free version and a paid Studio version with additional features. To download and set up DaVinci Resolve, follow these steps:"
                 },
                 {
                   "type": "text",
-                  "value": "<ol>1. Download from https://www.blackmagicdesign.com<br>/products/davinciresolve <br>2. Click on the zip file \"DaVinci_Resolve_XX.Y.Z_Linux.zip\" and extract it.<br>3. Click \"DaVinci_Resolve_XX.Y.Z_Linux.run\" to run the set up.<br>4. Follow instructions as prompted.</ol>"
+                  "value": "<ol>1. Download from https://www.blackmagicdesign.com<br>/products/davinciresolve <br>2. Click on the zip file \"DaVinci_Resolve_XX.Y.Z_Linux.zip\" and extract it.<br>3. Click \"DaVinci_Resolve_XX.Y.Z_Linux.run\" to run the setup.<br>4. Follow the instructions as prompted.</ol>"
+                },
+                {
+                  "type": "note",
+                  "value": "DaVinci Resolve requires proper OpenCL drivers to function. Pop!_OS includes compatible drivers for most modern AMD, Intel, and NVIDIA GPUs. Make sure your system is up to date before installation.",
+                  "kind": "info",
+                  "message": "System Requirements"
                 },
                 {
                   "type": "text",
-                  "value": "DaVinci Resolve's free version does not support mp4, and neither the free or paid version support AAC, to work around this issue we will use FFmpeg as we downloaded this earlier in this guide. FFmpeg is a very powerful tool also used for coverting video file formats."
+                  "value": "The free version does not support decoding or encoding H.264 and H.265 video codecs, regardless of container type. Neither the free nor Studio version supports AAC audio codec. However, the free version does support MP4 containers with compatible codecs like AV1 video with MP3 or PCM audio."
+                },
+                {
+                  "type": "text",
+                  "value": "To work with unsupported formats, you'll need to transcode them using FFmpeg, which we installed earlier in this guide. FFmpeg is a powerful tool for converting video and audio file formats."
+                },
+                {
+                  "type": "text",
+                  "value": "For DaVinci Resolve Free, if your MP4 contains H.264/H.265 video with MP3 or PCM audio, transcode only the video to a supported codec:"
                 },
                 {
                   "type": "code",
-                  "value": "ffmpeg -i input.mp4 -c:v prores_ks -profile:v 3 -qscale:v 9 -acodec pcm_s16le output.mov"
+                  "value": "ffmpeg -i input.mp4 -c:v dnxhd -profile:v dnxhr_hq -pix_fmt yuv422p -c:a copy output.mov"
                 },
                 {
                   "type": "text",
-                  "value": "For audio files, you can use the following command to convert mp3 to wav:"
+                  "value": "If your MP4 contains H.264/H.265 video with AAC audio, transcode both video and audio:"
+                },
+                {
+                  "type": "code",
+                  "value": "ffmpeg -i input.mp4 -c:v dnxhd -profile:v dnxhr_hq -pix_fmt yuv422p -c:a alac output.mov"
+                },
+                {
+                  "type": "text",
+                  "value": "For DaVinci Resolve Studio, H.264 and H.265 are supported, but AAC audio is not. You can transcode just the audio while keeping the video intact:"
+                },
+                {
+                  "type": "code",
+                  "value": "ffmpeg -i input.mp4 -c:v copy -c:a alac output.mov"
+                },
+                {
+                  "type": "text",
+                  "value": "For converting audio files to a compatible format for either version:"
                 },
                 {
                   "type": "code",
                   "value": "ffmpeg -i input.mp3 -c:a pcm_s16le output.wav"
                 },
+                {
+                  "type": "text",
+                  "value": "Follow this amazing guide at https://wiki.archlinux.org/title/DaVinci_Resolve for further information."
+                },
+
                 {
                   "type": "text",
                   "value": "Another powerful video editing tool is Kdenlive, which is a free and open-source video editing software. It is a great alternative to Davinci Resolve and is available for Linux. Kdenlive can be downloaded from their site at https://kdenlive.org/en/download/. To install via terminal, add the repository:"
