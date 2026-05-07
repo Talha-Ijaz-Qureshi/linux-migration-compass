@@ -13,7 +13,7 @@
   $: topicTitle = $currentSource[0].topic;
   const description = "A comprehensive guide for migrating to Linux Pop!_OS, covering installation, customization, and daily usage tips for beginners and advanced users.";
   const keywords = "Linux, Pop!_OS, System76, Linux Migration, Linux Guide, Open Source, Linux Installation, Linux Tutorial";
-  const url = "https://linuxmigration.tech";
+  const url = "https://talha-ijaz-qureshi.github.io/linux-migration-compass/";
   import { menuOpen } from "$lib/stores/menu";
   import {
 	blur,
